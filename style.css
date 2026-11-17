@@ -259,6 +259,39 @@ a:focus-visible,
   font-size: 17px;
 }
 
+.lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 28px 0 13px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23123b47' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 11px center,
+    rgba(255, 253, 248, 0.66);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 2px 0 rgba(18, 59, 71, 0.03);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.2s, transform 0.2s var(--ease-spring), border-color 0.2s;
+}
+
+.lang-select:hover {
+  background-color: var(--paper);
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
+.lang-select:focus-visible {
+  outline: 3px solid rgba(255, 123, 104, 0.64);
+  outline-offset: 3px;
+}
+
 .icon-btn .icon {
   width: 17px;
   height: 17px;
@@ -798,6 +831,28 @@ body.muted .sound-wave i {
   animation: plusFloat 1.2s var(--ease-out) forwards;
 }
 
+.fx-pat {
+  position: absolute;
+  z-index: 8;
+  width: 34px;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 8px rgba(18, 59, 71, 0.22));
+  animation: patTap 0.7s var(--ease-spring) var(--pat-delay, 0s) forwards;
+}
+
+.fx-pat svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes patTap {
+  0% { transform: translate(-50%, -50%) scale(0.4) rotate(-12deg); opacity: 0; }
+  25% { opacity: 1; }
+  55% { transform: translate(-50%, -62%) scale(1.1) rotate(4deg); opacity: 1; }
+  100% { transform: translate(-50%, -85%) scale(0.75) rotate(8deg); opacity: 0; }
+}
+
 .fx-snowpile {
   position: absolute;
   width: 80px;
@@ -912,7 +967,7 @@ body.muted .sound-wave i {
 
 .action-dock {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -1030,6 +1085,70 @@ body.muted .sound-wave i {
   background: #3aaa8e;
   border-radius: 50%;
   box-shadow: 0 0 0 3px rgba(58, 170, 142, 0.15);
+}
+
+.expression-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 7px 8px;
+  background: rgba(255, 253, 248, 0.52);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.expression-row::-webkit-scrollbar {
+  display: none;
+}
+
+.expr-label {
+  flex: none;
+  margin-right: 2px;
+  color: var(--ink-soft);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.expr-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: none;
+  height: 34px;
+  padding: 0 10px;
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s var(--ease-spring), background 0.15s, border-color 0.15s;
+}
+
+.expr-btn:hover {
+  background: #fff;
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
+.expr-btn.active {
+  color: var(--cream);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.expr-emoji {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.expr-label-text {
+  white-space: nowrap;
 }
 
 /* ---------- loading ---------- */
@@ -1839,7 +1958,7 @@ body.desktop-mode .pet-console {
 }
 
 body.desktop-mode .action-dock {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   padding: 7px;
   background: rgba(255, 250, 238, 0.24);
   border: 1px solid rgba(255, 255, 255, 0.32);
@@ -2039,7 +2158,7 @@ body.desktop-mode .toast {
   }
 
   .action-dock {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 5px;
   }
 
@@ -2109,7 +2228,7 @@ body.desktop-mode .toast {
   }
 
   body.desktop-mode .action-dock {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 4px;
     padding: 5px;
   }
@@ -2149,7 +2268,7 @@ body.desktop-mode .toast {
   }
 
   .action-dock {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .action-btn.ghost {

@@ -18,26 +18,55 @@
 
   <div class="app" id="app">
     <header class="topbar">
-      <a class="brand" href="#" aria-label="SEALO 小海豹基地首頁">
+      <a class="brand" href="#" aria-label="SEALO 小海豹基地首頁" data-i18n-aria="brand.aria">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" role="img">
-            <rect width="48" height="48" rx="16" fill="#123b47"/>
-            <ellipse cx="24" cy="26" rx="14" ry="11" fill="#fff8ea"/>
-            <circle cx="18.5" cy="24" r="1.9" fill="#123b47"/>
-            <circle cx="29.5" cy="24" r="1.9" fill="#123b47"/>
-            <ellipse cx="24" cy="29" rx="2.2" ry="1.5" fill="#ff8d7e"/>
-            <path d="M18 31.5c1.7 1.7 4 2.2 6 1.6M30 31.5c-1.7 1.7-4 2.2-6 1.6" fill="none" stroke="#123b47" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M9 38c2-3 5-5 9-5.7M39 38c-2-3-5-5-9-5.7" fill="none" stroke="#fff8ea" stroke-width="2" stroke-linecap="round"/>
+          <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+            <defs>
+              <linearGradient id="brandBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#17505f"/>
+                <stop offset="1" stop-color="#0d2f39"/>
+              </linearGradient>
+              <radialGradient id="brandFur" cx="0.38" cy="0.3" r="0.9">
+                <stop offset="0" stop-color="#fffaf0"/>
+                <stop offset="0.72" stop-color="#f7ecd6"/>
+                <stop offset="1" stop-color="#ecdcc0"/>
+              </radialGradient>
+            </defs>
+            <rect width="48" height="48" rx="15" fill="url(#brandBg)"/>
+            <path d="M8 41c3.4-4.6 7-4.6 10.4 0 3.4 4.6 7 4.6 10.4 0 2.2-3 4.2-3.6 5.6-2" fill="none" stroke="#6fd0e2" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+            <ellipse cx="24" cy="23" rx="14.4" ry="12.6" fill="url(#brandFur)"/>
+            <ellipse cx="24" cy="27.6" rx="9.6" ry="6.7" fill="#f3e3c8"/>
+            <ellipse cx="18.4" cy="21" rx="2.5" ry="3" fill="#16333b"/>
+            <ellipse cx="29.6" cy="21" rx="2.5" ry="3" fill="#16333b"/>
+            <circle cx="19.2" cy="19.9" r=".95" fill="#fff"/>
+            <circle cx="30.4" cy="19.9" r=".95" fill="#fff"/>
+            <ellipse cx="24" cy="25.6" rx="2.7" ry="2" fill="#2c3a41"/>
+            <ellipse cx="23.3" cy="24.9" rx=".85" ry=".5" fill="#fff" opacity=".55"/>
+            <path d="M24 27.4v1.7" stroke="#2c3a41" stroke-width="1" stroke-linecap="round"/>
+            <path d="M21.6 30.3c1.5 1.5 3.3 1.5 4.8 0" fill="none" stroke="#2c3a41" stroke-width="1.15" stroke-linecap="round"/>
+            <ellipse cx="15.4" cy="24.8" rx="2.5" ry="1.55" fill="#ff9d8a" opacity=".72"/>
+            <ellipse cx="32.6" cy="24.8" rx="2.5" ry="1.55" fill="#ff9d8a" opacity=".72"/>
+            <g stroke="#fff6e8" stroke-width="1.25" stroke-linecap="round" opacity=".9">
+              <path d="M17.4 27.4 11.6 26.4M17.9 28.8 11.2 30.2M18.3 30.2 12.7 33.6"/>
+              <path d="M30.6 27.4 36.4 26.4M30.1 28.8 36.8 30.2M29.7 30.2 35.3 33.6"/>
+            </g>
+            <path d="M39.2 12.2c-1-1.7-3.2-1.1-3.5.5-.3-1.6-2.5-2.2-3.5-.5.8 1.1 3.2 1.8 3.5 2.9.3-1.1 2.7-1.8 3.5-2.9Z" fill="#ff8d7e"/>
           </svg>
         </span>
         <span class="brand-text">
           <strong>SEALO</strong>
-          <small>小海豹基地</small>
+          <small data-i18n="brand.sub">小海豹基地</small>
         </span>
       </a>
 
       <div class="top-actions">
-        <span class="live-pill"><i aria-hidden="true"></i>海豹在線</span>
+        <span class="live-pill"><i aria-hidden="true"></i><span data-i18n="live">海豹在線</span></span>
+        <select class="lang-select" id="langSelect" aria-label="切換語言">
+          <option value="zh-Hant">繁體中文</option>
+          <option value="zh-Hans">简体中文</option>
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+        </select>
         <button class="icon-btn" id="soundBtn" type="button" aria-pressed="true" aria-label="切換音效（目前開啟）" title="切換音效">
           <svg class="icon icon-sound-on" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M4 10v4h4l5 4V6L8 10H4Z" fill="currentColor"/>
@@ -47,17 +76,17 @@
             <path d="M4 10v4h4l5 4V6L8 10H4Z" fill="currentColor"/>
             <path d="m16.5 9 5 5m0-5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
-          <span id="soundLabel">音效開</span>
+          <span id="soundLabel" data-i18n="sound.on">音效開</span>
         </button>
-        <button class="icon-btn" id="desktopBtn" type="button" aria-label="進入桌寵模式" title="進入桌寵模式">
+        <button class="icon-btn" id="desktopBtn" type="button" aria-label="進入桌寵模式" title="進入桌寵模式" data-i18n-aria="desktop.aria">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
             <rect x="3" y="4.5" width="18" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
             <path d="M9 20h6M12 16.5V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             <path d="m9.5 10.5 2.5-2.5 2.5 2.5M12 8v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span>桌寵模式</span>
+          <span data-i18n="desktop.mode">桌寵模式</span>
         </button>
-        <button class="icon-btn round" id="aboutBtn" type="button" aria-label="關於 SEALO 與資料來源" title="關於與資料來源">?</button>
+        <button class="icon-btn round" id="aboutBtn" type="button" aria-label="關於 SEALO 與資料來源" title="關於與資料來源" data-i18n-aria="about.aria">?</button>
       </div>
     </header>
 
@@ -73,7 +102,7 @@
             <span class="bubble-field" id="bubbleField"></span>
           </div>
 
-          <canvas id="sealCanvas" aria-label="一隻可以互動的立體海豹，坐在漂浮的冰塊上"></canvas>
+          <canvas id="sealCanvas" aria-label="一隻可以互動的立體海豹，坐在漂浮的冰塊上" data-i18n-aria="canvas.aria"></canvas>
 
           <div class="fallback-seal" id="fallbackSeal" hidden aria-hidden="true">
             <svg viewBox="0 0 440 360" role="img" aria-label="可愛的海豹插畫">
@@ -119,7 +148,7 @@
                 </g>
               </g>
             </svg>
-            <p class="fallback-note">你的瀏覽器沒有開啟 WebGL，先讓 2D 海豹陪你玩。</p>
+            <p class="fallback-note" data-i18n="fallback.note">你的瀏覽器沒有開啟 WebGL，先讓 2D 海豹陪你玩。</p>
           </div>
 
           <div class="stage-ui">
@@ -130,7 +159,7 @@
               </div>
               <div class="stage-badges">
                 <span class="badge">LIVE 3D</span>
-                <span class="badge soft" id="zeroClipBadge">零穿模</span>
+                <span class="badge soft" id="zeroClipBadge" data-i18n="badge.rt3d">即時 3D</span>
               </div>
             </div>
 
@@ -152,89 +181,99 @@
               <span class="loading-eye eye-a"></span>
               <span class="loading-eye eye-b"></span>
             </span>
-            <span id="loadingText">正在把海豹捏胖一點…</span>
+            <span id="loadingText" data-i18n="loading.text">正在把海豹捏胖一點…</span>
           </div>
 
-          <button class="exit-desktop" id="exitDesktop" type="button" hidden>← 離開桌寵模式</button>
+          <button class="exit-desktop" id="exitDesktop" type="button" hidden data-i18n="exit.desktop">← 離開桌寵模式</button>
         </div>
 
         <div class="pet-console">
-          <div class="vitals" aria-label="麻糬的狀態">
+          <div class="vitals" aria-label="麻糬的狀態" data-i18n-aria="vitals.aria">
             <div class="vital">
               <span class="vital-icon mood" aria-hidden="true">♥</span>
-              <span class="vital-label">心情</span>
+              <span class="vital-label" data-i18n="vital.mood">心情</span>
               <span class="vital-track"><i id="moodBar"></i></span>
               <b id="moodValue">82</b>
             </div>
             <div class="vital">
               <span class="vital-icon full" aria-hidden="true">●</span>
-              <span class="vital-label">飽足</span>
+              <span class="vital-label" data-i18n="vital.full">飽足</span>
               <span class="vital-track"><i id="fullBar"></i></span>
               <b id="fullValue">64</b>
             </div>
             <div class="vital">
               <span class="vital-icon energy" aria-hidden="true">✦</span>
-              <span class="vital-label">活力</span>
+              <span class="vital-label" data-i18n="vital.energy">活力</span>
               <span class="vital-track"><i id="energyBar"></i></span>
               <b id="energyValue">88</b>
             </div>
           </div>
 
-          <div class="action-dock" role="group" aria-label="和海豹互動">
-            <button class="action-btn primary" type="button" data-action="pet" aria-label="摸摸海豹">
+          <div class="action-dock" role="group" aria-label="和海豹互動" data-i18n-aria="actions.aria">
+            <button class="action-btn primary" type="button" data-action="pet" aria-label="摸摸海豹" data-i18n-aria="action.pet">
               <span class="action-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M12 20.2C6.8 16.8 3 13.6 3 9.5 3 6.8 5 5 7.5 5c1.9 0 3.4 1 4.5 2.6C13.1 6 14.6 5 16.5 5 19 5 21 6.8 21 9.5c0 4.1-3.8 7.3-9 10.7Z" fill="currentColor"/></svg>
               </span>
-              <span><b>摸摸</b><small>摸摸頭</small></span>
+              <span><b data-i18n="action.pet">摸摸</b><small data-i18n="action.pet.sub">摸摸頭</small></span>
             </button>
-            <button class="action-btn" type="button" data-action="feed" aria-label="餵小魚">
+            <button class="action-btn" type="button" data-action="feed" aria-label="餵小魚" data-i18n-aria="action.feed">
               <span class="action-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M3.5 13c2.8-3.7 7-4.9 10.8-3.6l3.1 1.1c1.7.6 2.8 1.8 3.1 3.4.2 1.3-1 2.3-2.3 1.8l-3.5-1.3c-1.7-.6-3.4.1-4.2 1.7l-.7 1.4c-.5 1-1.9 1.1-2.6.2L3.5 13Z" fill="currentColor"/><circle cx="7.7" cy="9.2" r="1.2" fill="#123b47"/><path d="m16.5 7.2 1.4-1.4M18 10.2h2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
               </span>
-              <span><b>餵小魚</b><small>補充飽足</small></span>
+              <span><b data-i18n="action.feed">餵小魚</b><small data-i18n="action.feed.sub">補充飽足</small></span>
             </button>
-            <button class="action-btn" type="button" data-action="play" aria-label="丟雪球">
+            <button class="action-btn" type="button" data-action="play" aria-label="丟雪球" data-i18n-aria="action.play">
               <span class="action-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><circle cx="11" cy="13" r="6.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 7.5 4 4.5M16.5 7 19 4M11 3v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 12.5h.01M13.5 12.5h.01" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
               </span>
-              <span><b>丟雪球</b><small>一起玩耍</small></span>
+              <span><b data-i18n="action.play">丟雪球</b><small data-i18n="action.play.sub">一起玩耍</small></span>
             </button>
-            <button class="action-btn" type="button" data-action="dance" aria-label="轉圈圈">
+            <button class="action-btn" type="button" data-action="dance" aria-label="轉圈圈" data-i18n-aria="action.dance">
               <span class="action-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>
               </span>
-              <span><b>轉圈圈</b><small>開心一下</small></span>
+              <span><b data-i18n="action.dance">轉圈圈</b><small data-i18n="action.dance.sub">開心一下</small></span>
             </button>
-            <button class="action-btn ghost" type="button" id="followBtn" data-action="follow" aria-pressed="true" aria-label="跟隨手指">
+            <button class="action-btn" type="button" data-action="belly" aria-label="拍肚皮" data-i18n-aria="action.belly">
+              <span class="action-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="6.4" ry="5" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="7" cy="9.6" r="1.9" fill="currentColor"/><circle cx="12" cy="7.8" r="2.1" fill="currentColor"/><circle cx="17" cy="9.6" r="1.9" fill="currentColor"/><path d="M10.4 14.4c.5.8 2.7.8 3.2 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span><b data-i18n="action.belly">拍肚皮</b><small data-i18n="action.belly.sub">咕嘟咕嘟</small></span>
+            </button>
+            <button class="action-btn ghost" type="button" id="followBtn" data-action="follow" aria-pressed="true" aria-label="跟隨手指" data-i18n-aria="action.follow">
               <span class="action-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M5 3.5 19.5 11l-6.2 1.6L10 19.5 5 3.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
               </span>
-              <span><b>跟隨手指</b><small id="followState">已開啟</small></span>
+              <span><b data-i18n="action.follow">跟隨手指</b><small id="followState" data-i18n="follow.on">已開啟</small></span>
             </button>
+          </div>
+
+          <div class="expression-row" id="exprRow" role="group" aria-label="切換表情" data-i18n-aria="expr.aria">
+            <span class="expr-label" data-i18n="expr.label">表情</span>
           </div>
         </div>
       </section>
 
-      <aside class="dex" aria-label="世界海豹圖鑑">
+      <aside class="dex" aria-label="世界海豹圖鑑" data-i18n-aria="dex.aria">
         <div class="dex-head">
           <div>
             <p class="eyebrow">WORLD SEAL DEX</p>
-            <h1>世界海豹圖鑑</h1>
-            <p class="dex-sub">海豹科 20 種 · 19 現生 + 1 已滅絕 · SMM 2025</p>
+            <h1 data-i18n="dex.title">世界海豹圖鑑</h1>
+            <p class="dex-sub" data-i18n="dex.sub">海豹科 20 種 · 19 現生 + 1 已滅絕 · SMM 2025</p>
           </div>
-          <div class="dex-progress" title="已遇見的海豹">
+          <div class="dex-progress" title="已遇見的海豹" data-i18n-title="dex.progress.title">
             <strong id="foundCount">1</strong>
             <span>/ 20</span>
           </div>
         </div>
 
-        <div class="filter-row" id="filterRow" role="group" aria-label="依棲地篩選">
-          <button class="filter-chip active" type="button" data-filter="all">全部</button>
-          <button class="filter-chip" type="button" data-filter="arctic">北極</button>
-          <button class="filter-chip" type="button" data-filter="antarctic">南極</button>
-          <button class="filter-chip" type="button" data-filter="temperate">溫帶</button>
-          <button class="filter-chip" type="button" data-filter="tropical">熱帶</button>
-          <button class="filter-chip" type="button" data-filter="extinct">已滅絕</button>
+        <div class="filter-row" id="filterRow" role="group" aria-label="依棲地篩選" data-i18n-aria="filter.aria">
+          <button class="filter-chip active" type="button" data-filter="all" data-i18n="filter.all">全部</button>
+          <button class="filter-chip" type="button" data-filter="arctic" data-i18n="filter.arctic">北極</button>
+          <button class="filter-chip" type="button" data-filter="antarctic" data-i18n="filter.antarctic">南極</button>
+          <button class="filter-chip" type="button" data-filter="temperate" data-i18n="filter.temperate">溫帶</button>
+          <button class="filter-chip" type="button" data-filter="tropical" data-i18n="filter.tropical">熱帶</button>
+          <button class="filter-chip" type="button" data-filter="extinct" data-i18n="filter.extinct">已滅絕</button>
         </div>
 
         <div class="species-grid" id="speciesGrid" aria-live="polite"></div>
@@ -244,42 +283,42 @@
     </main>
 
     <footer class="footer">
-      <p>用即時光線步進（SDF）捏出的一體成形海豹 · 沒有任何外部圖片或音檔</p>
-      <p class="footer-meta">分類依 Society for Marine Mammalogy 2025 · 保育狀態依 IUCN Red List</p>
+      <p data-i18n="footer.line1">用即時光線步進（SDF）捏出的一體成形海豹 · 沒有任何外部圖片或音檔</p>
+      <p class="footer-meta" data-i18n="footer.meta">分類依 Society for Marine Mammalogy 2025 · 保育狀態依 IUCN Red List</p>
     </footer>
   </div>
 
   <dialog class="about-dialog" id="aboutDialog">
     <div class="dialog-inner">
-      <button class="dialog-close" id="dialogClose" type="button" aria-label="關閉">×</button>
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="關閉" data-i18n-aria="about.close">×</button>
       <p class="eyebrow">ABOUT SEALO</p>
-      <h2>一隻不會穿模的胖海豹</h2>
-      <p class="dialog-lede">麻糬不是預錄動畫，也不是拼接的 3D 模型。牠是用 signed distance field（SDF）即時捏出來的一體成形小海豹：身體、頭、鳍與尾巴以平滑融合連接，所以不論呼吸、眨眼、揮手或轉圈，都不會出現關節穿模。</p>
+      <h2 data-i18n="about.title">一隻一體成形的胖海豹</h2>
+      <p class="dialog-lede" data-i18n="about.lede">麻糬不是預錄動畫，也不是拼接的 3D 模型。牠是用 signed distance field（SDF）即時捏出來的一體成形小海豹：身體、頭、鳍與尾巴以平滑融合連接，所以怎麼動都不會有接縫或破洞。</p>
 
       <div class="dialog-grid">
         <section>
-          <h3>怎麼玩</h3>
+          <h3 data-i18n="about.how.title">怎麼玩</h3>
           <ul>
-            <li>點擊海豹：摸摸牠，會眨眼、愛心爆擊。</li>
-            <li>拖曳舞台：旋轉 3D 視角；滾輪可拉近拉遠。</li>
-            <li>餵小魚、丟雪球、轉圈圈：各有不同反應與音效。</li>
-            <li>右側圖鑑：切換全世界 20 種海豹科動物。</li>
-            <li>桌寵模式：把整頁變成一個跟著你互動的海豹視窗。</li>
+            <li data-i18n="about.how.li1">點擊海豹：摸摸牠，會眨眼、愛心爆擊。</li>
+            <li data-i18n="about.how.li2">拖曳舞台：旋轉 3D 視角；滾輪可拉近拉遠。</li>
+            <li data-i18n="about.how.li3">餵小魚、丟雪球、轉圈圈、拍肚皮：各有不同反應與音效。</li>
+            <li data-i18n="about.how.li4">下方可切換表情；右側圖鑑切換全世界 20 種海豹科動物。</li>
+            <li data-i18n="about.how.li5">桌寵模式：把整頁變成一個跟著你互動的海豹視窗。</li>
           </ul>
         </section>
         <section>
-          <h3>小知識</h3>
+          <h3 data-i18n="about.know.title">小知識</h3>
           <ul>
-            <li>本作收錄海豹科（Phocidae）2025 年 7 月最新分類的 20 種，其中加勒比僧海豹已滅絕。</li>
-            <li>塞馬環斑海豹於 2025 年升格為獨立物種 <i>Pusa saimensis</i>；拉多加環斑海豹仍是亞種，因此不另立一種。</li>
-            <li>音效全部由 Web Audio 即時合成，是可愛的「撒嬌聲」，不是真實海豹錄音。</li>
-            <li>保育狀態為 IUCN Red List 2025 年 10 月資料，可能隨最新評估變動。</li>
+            <li data-i18n="about.know.li1">本作收錄海豹科（Phocidae）2025 年 7 月最新分類的 20 種，其中加勒比僧海豹已滅絕。</li>
+            <li data-i18n-html="about.know.li2">塞馬環斑海豹於 2025 年升格為獨立物種 <i>Pusa saimensis</i>；拉多加環斑海豹仍是亞種，因此不另立一種。</li>
+            <li data-i18n="about.know.li3">音效全部由 Web Audio 即時合成，是可愛的「撒嬌聲」，不是真實海豹錄音。</li>
+            <li data-i18n="about.know.li4">保育狀態為 IUCN Red List 2025 年 10 月資料，可能隨最新評估變動。</li>
           </ul>
         </section>
       </div>
 
       <div class="dialog-sources">
-        <span>資料來源</span>
+        <span data-i18n="about.sources">資料來源</span>
         <a href="https://marinemammalscience.org/science-and-publications/list-marine-mammal-species-subspecies/" target="_blank" rel="noopener noreferrer">Society for Marine Mammalogy</a>
         <a href="https://www.iucnredlist.org/" target="_blank" rel="noopener noreferrer">IUCN Red List</a>
         <a href="https://www.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA</a>
@@ -291,10 +330,11 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <noscript>
-    <div class="noscript">請開啟 JavaScript，麻糬才能從冰上爬起來。</div>
+    <div class="noscript" data-i18n="noscript">請開啟 JavaScript，麻糬才能從冰上爬起來。</div>
   </noscript>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
